@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 mailerRoutes(app);
+app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(PORT, () => {
     console.log(`Server is runnig on PORT ${PORT}`);
