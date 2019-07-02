@@ -4,8 +4,11 @@ const troll = new mailer();
 const routes = ((app) => {
     app.route('/api/mailer')
         .post((req, res) => {
-            console.log('IWAS HERE');
-            troll.mailer(req);
+            console.log('troll', req);
+            
+            troll.mailer(req)
+            res.json({message: 'ok'});
+            res.sendStatus(200);
         })
 });
 

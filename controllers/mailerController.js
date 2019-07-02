@@ -39,10 +39,7 @@ class MailerController {
                 }
                 console.log('Message response: %s', info.envelope);
                 console.log('Message URL: %s', nodemailer.getTestMessageUrl(info));
-                // res.sendStatus(200).json();
-                // return res.sendStatus(200)
                 transporter.close();
-                
             });
         });
     };
