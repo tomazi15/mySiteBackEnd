@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 class MailerController {
     
-    mailer (req) {
+    mailer (req, res) {
         console.log('HELLO REQUEST', req.body);
         nodemailer.createTestAccount((err, account) => {
             const emailHtml = `
@@ -35,11 +35,21 @@ class MailerController {
     
             transporter.sendMail(mailOptions, (err, info)=> {
                 if (err) {
-                    return console.log(err);
+                    res.status(400);
+                    res.json({
+                        type: 'error',
+                        message: 'message failed to send'});
                 }
-                console.log('Message response: %s', info.envelope);
-                console.log('Message URL: %s', nodemailer.getTestMessageUrl(info));
+                // console.log('Message response: %s', info.envelope);
+                // console.log('Message URL: %s', nodemailer.getTestMessageUrl(info));
                 transporter.close();
+
+                res.status(200);
+                res.json({
+                    type: 'sucess',
+                    message: 'email has been sucesfully sent'
+                });
+
             });
         });
     };

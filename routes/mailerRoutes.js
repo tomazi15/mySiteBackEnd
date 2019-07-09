@@ -4,11 +4,7 @@ const troll = new mailer();
 const routes = ((app) => {
     app.route('/api/mailer')
         .post((req, res) => {
-            console.log('troll', req);
-            
-            troll.mailer(req)
-            res.json({message: 'ok'});
-            res.sendStatus(200);
+            troll.mailer(req, res);
         })
 });
 
