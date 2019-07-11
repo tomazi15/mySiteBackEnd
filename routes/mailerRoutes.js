@@ -8,8 +8,8 @@ const corsOptions = {
   }
 
 const routes = ((app) => {
-    app.route('/api/mailer', cors())
-        .post((req, res) => {
+    app.route('/api/mailer')
+        .post(cors(), (req, res) => {
             troll.mailer(req, res);
         })
 });
